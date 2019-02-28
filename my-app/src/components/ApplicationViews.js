@@ -7,7 +7,7 @@ import EmployeeList from './employee/EmployeeList'
 
 class ApplicationViews extends Component {
     state = {
-        candy: [],
+        candys: [],
         type: [],
         employees: [],
         stores: [],
@@ -22,9 +22,9 @@ class ApplicationViews extends Component {
         console.log("componentDidMount -- ApplicationViews")
         const newState = {}
 
-        fetch("http://localhost:5000/candy")
+        fetch("http://localhost:5000/candys")
             .then(r => r.json())
-            .then(candy => newState.candy = candy)
+            .then(candys => newState.candys = candys)
             .then(() => fetch("http://localhost:5000/type")
             .then(r => r.json()))
             .then(type => newState.type = type)
@@ -37,11 +37,11 @@ class ApplicationViews extends Component {
             .then(() => fetch("http://localhost:5000/stores")
             .then(r => r.json()))
             .then(stores => newState.stores = stores)
-            .then(() => this.setState(newState))
+            .then(() =>{this.setState(newState)})
     }
 
     render() {
-        console.log("render -- ApplicationViews")
+        console.log(this.state)
         return (
             <React.Fragment>
                 <Route exact path="/" render={(props) => {
@@ -54,7 +54,9 @@ class ApplicationViews extends Component {
                                 />
                 }} />
                 <Route path="/employees" render={(props) => {
-                    return <EmployeeList employees={this.state.employees} />
+                    return <EmployeeList
+                        employees={this.state.employees}
+                        />
                 }} />
             </React.Fragment>
         )

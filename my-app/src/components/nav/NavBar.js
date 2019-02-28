@@ -12,15 +12,16 @@ class NavBar extends Component {
                         <Link className="nav-link" to="/">Stores</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/candy">candy</Link>
+                        <Link className="nav-link" to="/employees">Employees</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/employees">Employees</Link>
+                        <Link className="nav-link" to="/candy">Candy</Link>
                     </li>
                 </ul>
             </nav>
         )
     }
 }
+
 
 export default NavBar

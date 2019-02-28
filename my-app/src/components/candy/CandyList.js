@@ -16,17 +16,17 @@ class CandyList extends Component {
     render() {
         console.log("render -- CandyList")
         return (
-            <article className="candy">
+            <article className="candys">
                 {
                     this.props.candys.map(candy =>
                         <Candy key={`candy-${candy.id}`}
                             candy={candy}
-                            typeOfCandy={
-                                this.props.candytype
-                                    .filter(ao => ao.candyId === candy.id)
-                                    .map(ao =>
+                            type={
+                                this.props.typeOfCandy
+                                    .filter(toc => toc.candyId === candy.id)
+                                    .map(toc =>
                                         this.props.typeOfCandy.find(
-                                            o => o.id === ao.typeOfCandyId
+                                            c => c.id === toc.typeOfCandyId
                                         ).name
                                     )
                             } />
