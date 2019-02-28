@@ -8,7 +8,7 @@ class CandyList extends Component {
         console.log("componentDidMount -- CandyList")
     }
 
-    componentDidUpdate () {
+    componentDidUpdate() {
         console.log("componentDidUpdate -- CandyList")
     }
 
@@ -21,12 +21,12 @@ class CandyList extends Component {
                     this.props.candys.map(candy =>
                         <Candy key={`candy-${candy.id}`}
                             candy={candy}
-                            type={
-                                this.props.typeOfCandy
-                                    .filter(toc => toc.candyId === candy.id)
-                                    .map(toc =>
-                                        this.props.typeOfCandy.find(
-                                            c => c.id === toc.typeOfCandyId
+                            types={
+                                this.props.typeOfCandys
+                                    .filter(candyType => candyType.candyId === candy.id)
+                                    .map(candyType =>
+                                        this.props.types.find(
+                                            t => t.id === candyType.typeId
                                         ).name
                                     )
                             } />

@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
 
 class Candy extends Component {
+    componentDidMount() {
+        console.log(`componentDidMount -- Animal ${this.props.animal.id}`)
+    }
     render() {
 
         return (
             <section className="candy">
                 <div>
-                    { this.props.candy.name }
+                    { this.props.candys.name }
                 </div>
                 <div>
-                    { this.props.type.join(", ") }
+                    { this.props.types.join(", ") }
                 </div>
             </section>
         )

@@ -8,10 +8,10 @@ import EmployeeList from './employee/EmployeeList'
 class ApplicationViews extends Component {
     state = {
         candys: [],
-        type: [],
+        types: [],
         employees: [],
         stores: [],
-        candytype: []
+        typeOfCandys: []
     }
 
     componentDidUpdate () {
@@ -25,12 +25,12 @@ class ApplicationViews extends Component {
         fetch("http://localhost:5000/candys")
             .then(r => r.json())
             .then(candys => newState.candys = candys)
-            .then(() => fetch("http://localhost:5000/type")
+            .then(() => fetch("http://localhost:5000/types")
             .then(r => r.json()))
-            .then(type => newState.type = type)
-            .then(() => fetch("http://localhost:5000/candytype")
+            .then(types => newState.types = types)
+            .then(() => fetch("http://localhost:5000/typeOfCandys")
             .then(r => r.json()))
-            .then(candytype => newState.candytype = candytype)
+            .then(typeOfCandys => newState.typeOfCandys = typeOfCandys)
             .then(() => fetch("http://localhost:5000/employees")
             .then(r => r.json()))
             .then(employees => newState.employees = employees)
@@ -48,9 +48,9 @@ class ApplicationViews extends Component {
                     return <StoresList stores={this.state.stores} />
                 }} />
                 <Route path="/candy" render={(props) => {
-                    return <CandyList candy={this.state.candy}
-                                type={this.state.type}
-                                candyType={this.state.candyType}
+                    return <CandyList candys={this.state.candys}
+                                types={this.state.typess}
+                                typeOfCandys={this.state.typeOfCandys}
                                 />
                 }} />
                 <Route path="/employees" render={(props) => {
