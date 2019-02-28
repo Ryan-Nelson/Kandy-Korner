@@ -1,0 +1,36 @@
+{
+    "stores": [        
+        {"id": 1, "name": "Nashville North"},
+        {"id": 2, "name": "Nashville South"}
+    ],
+    "employees": [
+        { "id": 1, "name": "Ryan Tanay" },
+        { "id": 2, "name": "Emma Beaton" },
+        { "id": 3, "name": "Dani Adkins" },
+        { "id": 4, "name": "Adam Oswalt" },
+        { "id": 5, "name": "Fletcher Bangs" },
+        { "id": 6, "name": "Angela Lee" }
+    ],
+    "type":[
+        { "id": 1, "type": "sweet" },
+        { "id": 2, "type": "sour" },
+        { "id": 3, "type": "frutie" },
+        { "id": 4, "type": "spice" }
+    ],
+    "candy": [
+        { "id": 1, "name": "Recese" },
+        { "id": 2, "name": "lemon head" },
+        { "id": 3, "name": "jolly rancher" },
+        { "id": 4, "name": "hot tomoli" },
+        { "id": 5, "name": "kit kat" },
+        { "id": 6, "name": "war head" }
+    ],
+    "typeOfCandy": [
+        { "id": 1, "candyId": 1, "typeId": 1 },
+        { "id": 2, "candyId": 2, "typeId": 2 },
+        { "id": 3, "candyId": 3, "typeId": 3 },
+        { "id": 4, "candyId": 4, "typeId": 4 },
+        { "id": 5, "candyId": 5, "typeId": 1 },
+        { "id": 6, "candyId": 5, "typeId": 2 }
+    ]
+}
