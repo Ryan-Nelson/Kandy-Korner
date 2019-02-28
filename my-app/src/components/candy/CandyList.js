@@ -17,7 +17,7 @@ class CandyList extends Component {
         console.log("render -- CandyList")
         return (
             <article className="candys">
-                {
+                {/* {
                     this.props.candys.map(candy =>
                         <Candy key={`candy-${candy.id}`}
                             candy={candy}
@@ -31,7 +31,7 @@ class CandyList extends Component {
                                     )
                             } />
                     )
-                }
+                } */}
             </article>
         )
     }

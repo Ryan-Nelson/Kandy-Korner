@@ -49,7 +49,7 @@ class ApplicationViews extends Component {
                 }} />
                 <Route path="/candy" render={(props) => {
                     return <CandyList candys={this.state.candys}
-                                types={this.state.typess}
+                                types={this.state.types}
                                 typeOfCandys={this.state.typeOfCandys}
                                 />
                 }} />
