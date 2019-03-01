@@ -17,10 +17,18 @@ class CandyList extends Component {
         console.log("render -- CandyList")
         return (
             <article className="candys">
-                {/* {
+                {
                     this.props.candys.map(candy =>
                         <Candy key={`candy-${candy.id}`}
-                            candy={candy}
+                            candys={
+                                this.props.typeOfCandys
+                                    .filter(candyName => candyName.candyId === candy.id)
+                                    .map(candyName =>
+                                        this.props.candys.find(
+                                            c => c.id === candyName.candyId
+                                        ).name
+                                    )
+                            }
                             types={
                                 this.props.typeOfCandys
                                     .filter(candyType => candyType.candyId === candy.id)
@@ -31,7 +39,7 @@ class CandyList extends Component {
                                     )
                             } />
                     )
-                } */}
+                }
             </article>
         )
     }
