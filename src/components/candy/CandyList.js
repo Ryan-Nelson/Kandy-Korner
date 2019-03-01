@@ -38,6 +38,7 @@ class CandyList extends Component {
                                         ).name
                                     )
                             } />
+                            
                     )
                 }
             </article>

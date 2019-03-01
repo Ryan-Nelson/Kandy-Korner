@@ -9,8 +9,6 @@ class Candy extends Component {
             <section className="candy">
                 <div>
                     { this.props.candys.join(", ") }
-                </div>
-                <div>
                     { this.props.types.join(", ") }
                 </div>
             </section>

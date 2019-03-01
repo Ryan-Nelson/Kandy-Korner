@@ -19,6 +19,14 @@ class ApplicationViews extends Component {
         typeOfCandys: []
     }
 
+    removeBadCandy = () => {
+        CandysManager.get({
+            "method": "DELETE"
+        })
+        .then(CandysManager.getAll())
+        .then(employees => this.setState({ employees: employees }))
+    }
+
     componentDidUpdate() {
         console.log("componentDidUpdate -- ApplicationViews")
     }
@@ -53,6 +61,7 @@ class ApplicationViews extends Component {
                     return <CandyList candys={this.state.candys}
                         types={this.state.types}
                         typeOfCandys={this.state.typeOfCandys}
+                        removeBadCandy={this.removeBadCandy}
                     />
                 }} />
                 <Route path="/employees" render={(props) => {
