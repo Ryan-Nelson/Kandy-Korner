@@ -3,6 +3,11 @@ import React, { Component } from "react"
 import CandyList from './candy/CandyList'
 import StoresList from './stores/StoresList'
 import EmployeeList from './employee/EmployeeList'
+import CandysManager from "../Modules/CandysManager"
+import EmployeesManager from "../Modules/EmployeesManager"
+import StoresManager from "../Modules/StoresManager"
+import TypesManager from "../Modules/TypesManager"
+
 
 
 class ApplicationViews extends Component {
@@ -14,7 +19,7 @@ class ApplicationViews extends Component {
         typeOfCandys: []
     }
 
-    componentDidUpdate () {
+    componentDidUpdate() {
         console.log("componentDidUpdate -- ApplicationViews")
     }
 
@@ -22,23 +27,20 @@ class ApplicationViews extends Component {
         console.log("componentDidMount -- ApplicationViews")
         const newState = {}
 
-        fetch("http://localhost:5000/candys")
-            .then(r => r.json())
+        CandysManager.getAll()
             .then(candys => newState.candys = candys)
-            .then(() => fetch("http://localhost:5000/types")
-            .then(r => r.json()))
+            .then(() => TypesManager.getAll())
             .then(types => newState.types = types)
-            .then(() => fetch("http://localhost:5000/typeOfCandys")
-            .then(r => r.json()))
-            .then(typeOfCandys => newState.typeOfCandys = typeOfCandys)
-            .then(() => fetch("http://localhost:5000/employees")
-            .then(r => r.json()))
-            .then(employees => newState.employees = employees)
-            .then(() => fetch("http://localhost:5000/stores")
-            .then(r => r.json()))
+            .then(() => StoresManager.getAll())
             .then(stores => newState.stores = stores)
-            .then(() =>{this.setState(newState)})
+            .then(() => EmployeesManager.getAll())
+            .then(employees => newState.employees = employees)
+            .then(() => fetch("http://localhost:5000/typeOfCandys")
+                .then(r => r.json()))
+            .then(typeOfCandys => newState.typeOfCandys = typeOfCandys)
+            .then(() => this.setState(newState))
     }
+
 
     render() {
         console.log(this.state)
@@ -49,14 +51,14 @@ class ApplicationViews extends Component {
                 }} />
                 <Route path="/candy" render={(props) => {
                     return <CandyList candys={this.state.candys}
-                                types={this.state.types}
-                                typeOfCandys={this.state.typeOfCandys}
-                                />
+                        types={this.state.types}
+                        typeOfCandys={this.state.typeOfCandys}
+                    />
                 }} />
                 <Route path="/employees" render={(props) => {
                     return <EmployeeList
                         employees={this.state.employees}
-                        />
+                    />
                 }} />
             </React.Fragment>
         )
