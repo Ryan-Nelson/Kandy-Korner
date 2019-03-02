@@ -29,6 +29,7 @@ class CandyList extends Component {
                                         ).name
                                     )
                             }
+                            removeBadCandy={this.props.removeBadCandy}
                             types={
                                 this.props.typeOfCandys
                                     .filter(candyType => candyType.candyId === candy.id)
