@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import "./CandyList.css"
-import Candy from './candy';
+import Candy from './CandyCards';
 
 
 class CandyList extends Component {

@@ -19,13 +19,20 @@ class ApplicationViews extends Component {
         typeOfCandys: []
     }
 
-    removeBadCandy = (candys) => {
-        CandysManager.get({
-            "method": "DELETE"
-        })
-        .then(CandysManager.getAll())
+    removeBadCandy = (id) =>
+    CandysManager.delete(id)
+        .then(CandysManager.getAll)
         .then(candys => this.setState({ candys: candys }))
-    }
+
+    
+    fireEmployee = (id) =>
+    EmployeesManager.delete(id)
+            .then(EmployeesManager.getAll)
+            .then(employees => this.setState({ employees: employees }))
+
+    getAllCandysAgain = () =>
+        CandysManager.getAll().then(candys => this.setState({ candys: candys }))
+
 
     componentDidUpdate() {
         console.log("componentDidUpdate -- ApplicationViews")
@@ -64,11 +71,25 @@ class ApplicationViews extends Component {
                         removeBadCandy={this.state.removeBadCandy}
                     />
                 }} />
+                {/* <Route exact path="/candyss/:candysId(\d+)" render={(props) => {
+                    console.log(props)
+                    return <CandysDetails
+                        {...props}
+                        removeBadCandy={this.removeBadCandy}
+                        candys={this.state.candys} />
+                }} /> */}
                 <Route path="/employees" render={(props) => {
                     return <EmployeeList
+                        fireEmployee={this.fireEmployee}
                         employees={this.state.employees}
                     />
                 }} />
+                {/* <Route exact path="/employees/:employeeId(\d+)" render={(props) => {
+                    return <EmployeeDetail
+                        {...props}
+                        fireEmployee={this.fireEmployee}
+                        employees={this.state.employees} />
+                }} /> */}
             </React.Fragment>
         )
     }
