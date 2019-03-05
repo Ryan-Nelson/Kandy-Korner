@@ -1,5 +1,16 @@
-.candy {
+.candys {
     display: flex;
+    justify-content: space-evenly;
     flex-direction: row;
-    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.candyButton {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 0 10px 0;
+}
+
+.toastContainer {
+    max-width: 300px;
 }
