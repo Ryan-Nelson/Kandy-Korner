@@ -14,11 +14,20 @@ export default {
     },
     addCandy(newCandy) {
         return fetch(`${Settings.remoteURL}/candys`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(newCandy)
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newCandy)
         }).then(data => data.json())
+    },
+    updateCandy(editedCandy) {
+        return fetch(`${Settings.remoteURL}/candys/${editedCandy.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editedCandy)
+        }).then(data => data.json());
     }
 };

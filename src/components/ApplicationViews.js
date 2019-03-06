@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from "react-router-dom"
 import React, { Component } from "react"
 
 import CandyList from './candy/CandyList'
@@ -13,9 +13,15 @@ import TypeManager from '../modules/TypeManager'
 import LocationManager from '../modules/LocationManager'
 import EmployeeManager from '../modules/EmployeeManager'
 import CandyForm from './candy/CandyForm';
+import CandyEditForm from "./candy/CandyEditForm"
 
+import Login from './authentication/Login'
 
-class ApplicationViews extends Component {
+export default class ApplicationViews extends Component {
+
+    // Check if credentials are in local storage
+    isAuthenticated = () => sessionStorage.getItem("credentials") !== null
+
     state = {
         types: [],
         typeOfCandys: [],
@@ -31,6 +37,16 @@ class ApplicationViews extends Component {
 
     addCandy = candy => {
         return CandyManager.addCandy(candy)
+            .then(() => CandyManager.getAll())
+            .then(candys =>
+                this.setState({
+                    candys: candys
+                })
+            )
+    }
+
+    updateCandy = candy => {
+        return CandyManager.updateCandy(candy)
             .then(() => CandyManager.getAll())
             .then(candys =>
                 this.setState({
@@ -75,16 +91,17 @@ class ApplicationViews extends Component {
         console.log("render -- ApplicationViews")
         return (
             <React.Fragment>
+                <Route path="/login" component={Login} />
                 <Route exact path="/" render={(props) => {
                     return <LocationList locations={this.state.locations} />
                 }} />
-                <Route exact path="/candys" render={(routePropertyObject) => {
+                <Route exact path="/candys" render={(props) => {
                     return <CandyList candys={this.state.candys}
                                 types={this.state.types}
                                 typeOfCandys={this.state.typeOfCandys}
                                 removeCandy={this.removeCandy}
                                 loadCandys={this.getAllCandysAgain}
-                                {...routePropertyObject}
+                                {...props}
                                 />
                 }} />
                 <Route exact path="/candys/:candyId(\d+)" render={(props) => {
@@ -94,16 +111,28 @@ class ApplicationViews extends Component {
                         removeCandy={this.removeCandy}
                         animals={this.state.animals} />
                 }} />
+                <Route path="/candys/:candyId(\d+)/edit" render={props => {
+                        return <CandyEditForm
+                                    {...props}
+                                    employees={this.state.employees}
+                                    updateCandy={this.updateCandy}/>
+                    }}
+                    />
                 <Route path="/candys/new" render={(props) => {
                     return <CandyForm {...props}
                                     addCandy={this.addCandy}
                                     employees={this.state.employees} />
                 }} />
-                <Route exact path="/employees" render={(props) => {
-                    return <EmployeeList
-                    fireEmployee={this.fireEmployee}
-                    employees={this.state.employees}
-                    />
+                <Route exact path="/employees" render={props => {
+                    if (this.isAuthenticated()) {
+                        return <EmployeeList fireEmployee={this.fireEmployee}
+                                            candys={this.state.candys}
+                                            types={this.state.types}
+                                            typeOfCandys={this.state.typeOfCandys}
+                                            employees={this.state.employees} />
+                    } else {
+                        return <Redirect to="/login" />
+                    }
                 }} />
                 <Route exact path="/employees/:employeeId(\d+)" render={(props) => {
                     return <EmployeeDetail
@@ -115,5 +144,3 @@ class ApplicationViews extends Component {
         )
     }
 }
-
-export default ApplicationViews

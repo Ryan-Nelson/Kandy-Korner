@@ -45,20 +45,15 @@ class CandyList extends Component {
                 </button>
             </div>
             <article className="candys">
-                {
+            {
                     this.props.candys.map(candy =>
                         <CandyCard key={`candy-${candy.id}`}
                             candy={candy}
                             removeCandy={this.props.removeCandy}
-                            types={
-                                this.props.typeOfCandys
-                                    .filter(ao => ao.candyId === candy.id)
-                                    .map(ao =>
-                                        this.props.types.find(
-                                            o => o.id === ao.typeId
-                                        ).name
-                                    )
-                            } />
+                            types={this.props.types}
+                            typeOfCandy={this.props.typeOfCandy}
+                            history={this.props.history}
+                            />
                     )
                 }
             </article>
