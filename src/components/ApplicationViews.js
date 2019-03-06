@@ -1,4 +1,4 @@
-import { Route, Redirect } from "react-router-dom"
+import { Route } from "react-router-dom"
 import React, { Component } from "react"
 
 import CandyList from './candy/CandyList'
@@ -15,12 +15,11 @@ import EmployeeManager from '../modules/EmployeeManager'
 import CandyForm from './candy/CandyForm';
 import CandyEditForm from "./candy/CandyEditForm"
 
-import Login from './authentication/Login'
 
 export default class ApplicationViews extends Component {
 
     // Check if credentials are in local storage
-    isAuthenticated = () => sessionStorage.getItem("credentials") !== null
+    // isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
     state = {
         types: [],
@@ -64,7 +63,7 @@ export default class ApplicationViews extends Component {
         CandyManager.getAll().then(candys => this.setState({ candys: candys }))
 
 
-    componentDidUpdate () {
+    componentDidUpdate() {
         console.log("componentDidUpdate -- ApplicationViews")
     }
 
@@ -81,7 +80,7 @@ export default class ApplicationViews extends Component {
             .then(() => TypeManager.getAll())
             .then(types => newState.types = types)
             .then(() => fetch("http://localhost:5000/typeOfCandys")
-            .then(r => r.json()))
+                .then(r => r.json()))
             .then(typeOfCandys => newState.typeOfCandys = typeOfCandys)
             .then(() => this.setState(newState))
     }
@@ -91,18 +90,17 @@ export default class ApplicationViews extends Component {
         console.log("render -- ApplicationViews")
         return (
             <React.Fragment>
-                <Route path="/login" component={Login} />
                 <Route exact path="/" render={(props) => {
                     return <LocationList locations={this.state.locations} />
                 }} />
                 <Route exact path="/candys" render={(props) => {
                     return <CandyList candys={this.state.candys}
-                                types={this.state.types}
-                                typeOfCandys={this.state.typeOfCandys}
-                                removeCandy={this.removeCandy}
-                                loadCandys={this.getAllCandysAgain}
-                                {...props}
-                                />
+                        types={this.state.types}
+                        typeOfCandys={this.state.typeOfCandys}
+                        removeCandy={this.removeCandy}
+                        loadCandys={this.getAllCandysAgain}
+                        {...props}
+                    />
                 }} />
                 <Route exact path="/candys/:candyId(\d+)" render={(props) => {
                     console.log(props)
@@ -112,27 +110,23 @@ export default class ApplicationViews extends Component {
                         animals={this.state.animals} />
                 }} />
                 <Route path="/candys/:candyId(\d+)/edit" render={props => {
-                        return <CandyEditForm
-                                    {...props}
-                                    employees={this.state.employees}
-                                    updateCandy={this.updateCandy}/>
-                    }}
-                    />
+                    return <CandyEditForm
+                        {...props}
+                        employees={this.state.employees}
+                        updateCandy={this.updateCandy} />
+                }}
+                />
                 <Route path="/candys/new" render={(props) => {
                     return <CandyForm {...props}
-                                    addCandy={this.addCandy}
-                                    employees={this.state.employees} />
+                        addCandy={this.addCandy}
+                        employees={this.state.employees} />
                 }} />
                 <Route exact path="/employees" render={props => {
-                    if (this.isAuthenticated()) {
-                        return <EmployeeList fireEmployee={this.fireEmployee}
-                                            candys={this.state.candys}
-                                            types={this.state.types}
-                                            typeOfCandys={this.state.typeOfCandys}
-                                            employees={this.state.employees} />
-                    } else {
-                        return <Redirect to="/login" />
-                    }
+                    return <EmployeeList fireEmployee={this.fireEmployee}
+                        candys={this.state.candys}
+                        employees={this.state.employees}
+                        types={this.state.types}
+                        typeOfCandys={this.state.typeOfCandys} />
                 }} />
                 <Route exact path="/employees/:employeeId(\d+)" render={(props) => {
                     return <EmployeeDetail

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import person from "./person.png"
 import "./EmployeeList.css"
 import "./Employee.css"
+import CandyCard from '../candy/CandyCard'
 
 
 class EmployeeList extends Component {
@@ -27,6 +28,18 @@ class EmployeeList extends Component {
                             <Link className="nav-link" to={`/employees/${employee.id}`}>
                                 {employee.name}
                             </Link>
+                        </div>
+
+                        <h6 className="card-subtitle mb-2 text-muted">Caretaker For</h6>
+                        <div className="candys--maker">
+                        {
+                            this.props.candys
+                                .filter(c => c.employeeId === employee.id)
+                                .map(c => <CandyCard
+                                        key={c.id}
+                                        candy={c}
+                                        {...this.props} />)
+                        }
                         </div>
                     </div>
                 )

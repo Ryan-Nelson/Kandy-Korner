@@ -1,36 +1,126 @@
-{  
-    "candys": [
-    { "id": 1, "name": "Recese", "type": "sweet"},
-    { "id": 2, "name": "lemon head", "type": "sour"},
-    { "id": 3, "name": "jolly rancher", "type": "frutie"},
-    { "id": 4, "name": "hot tomoli", "type": "spice"},
-    { "id": 5, "name": "kit kat", "type": "sweet"},
-    { "id": 6, "name": "war head", "type": "sour"}
+{
+  "candys": [
+    {
+      "id": 1,
+      "name": "Recese",
+      "type": "sweet"
+    },
+    {
+      "id": 2,
+      "name": "lemon head",
+      "type": "sour"
+    },
+    {
+      "id": 3,
+      "name": "jolly rancher",
+      "type": "frutie"
+    },
+    {
+      "id": 4,
+      "name": "hot tomoli",
+      "type": "spice"
+    },
+    {
+      "id": 5,
+      "name": "kit kat",
+      "type": "sweet"
+    },
+    {
+      "id": 6,
+      "name": "war head",
+      "type": "sour"
+    },
+    {
+      "name": "rqwweqer",
+      "type": "fadff",
+      "employeeId": 1,
+      "id": 7
+    }
   ],
   "employees": [
-    { "id": 1, "name": "Ryan Tanay" },
-    { "id": 2, "name": "Emma Beaton" },
-    { "id": 3, "name": "Dani Adkins" },
-    { "id": 4, "name": "Adam Oswalt" },
-    { "id": 5, "name": "Fletcher Bangs" },
-    { "id": 6, "name": "Angela Lee" }
+    {
+      "id": 1,
+      "name": "Ryan Tanay"
+    },
+    {
+      "id": 2,
+      "name": "Emma Beaton"
+    },
+    {
+      "id": 3,
+      "name": "Dani Adkins"
+    },
+    {
+      "id": 4,
+      "name": "Adam Oswalt"
+    },
+    {
+      "id": 5,
+      "name": "Fletcher Bangs"
+    },
+    {
+      "id": 6,
+      "name": "Angela Lee"
+    }
   ],
-    "locations": [
-      {"id": 1, "name": "Nashville North"},
-      {"id": 2, "name": "Nashville South"}
-    ],
-    "types":[
-      { "id": 1, "name": "sweet"},
-      { "id": 2, "name": "sour"},
-      { "id": 3, "name": "frutie"},
-      { "id": 4, "name": "spice"}
+  "locations": [
+    {
+      "id": 1,
+      "name": "Nashville North"
+    },
+    {
+      "id": 2,
+      "name": "Nashville South"
+    }
   ],
-    "typeOfCandys": [
-      { "id": 1, "candyId": 1, "typeId": 1 },
-      { "id": 2, "candyId": 2, "typeId": 2 },
-      { "id": 3, "candyId": 3, "typeId": 3 },
-      { "id": 4, "candyId": 4, "typeId": 4 },
-      { "id": 5, "candyId": 5, "typeId": 1 },
-      { "id": 6, "candyId": 6, "typeId": 2 }
-    ]
-  }
+  "types": [
+    {
+      "id": 1,
+      "name": "sweet"
+    },
+    {
+      "id": 2,
+      "name": "sour"
+    },
+    {
+      "id": 3,
+      "name": "frutie"
+    },
+    {
+      "id": 4,
+      "name": "spice"
+    }
+  ],
+  "typeOfCandys": [
+    {
+      "id": 1,
+      "candyId": 1,
+      "typeId": 1
+    },
+    {
+      "id": 2,
+      "candyId": 2,
+      "typeId": 2
+    },
+    {
+      "id": 3,
+      "candyId": 3,
+      "typeId": 3
+    },
+    {
+      "id": 4,
+      "candyId": 4,
+      "typeId": 4
+    },
+    {
+      "id": 5,
+      "candyId": 5,
+      "typeId": 1
+    },
+    {
+      "id": 6,
+      "candyId": 6,
+      "typeId": 2
+    }
+  ]
+}

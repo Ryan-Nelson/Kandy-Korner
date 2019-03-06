@@ -51,7 +51,7 @@ class CandyList extends Component {
                             candy={candy}
                             removeCandy={this.props.removeCandy}
                             types={this.props.types}
-                            typeOfCandy={this.props.typeOfCandy}
+                            typeOfCandys={this.props.typeOfCandys}
                             history={this.props.history}
                             />
                     )
